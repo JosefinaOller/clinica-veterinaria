@@ -29,20 +29,20 @@ public class DuenioController {
         return duenioService.getDuenios();
     }
     
-    @GetMapping("/duenio/traer/{id_duenio}")
-    public Duenio getPersona(@PathVariable Long id_duenio){
-        return duenioService.getDuenio(id_duenio);
+    @GetMapping("/duenio/traer/{id}")
+    public Duenio getPersona(@PathVariable Long id){
+        return duenioService.getDuenio(id);
     }
     
     @PutMapping("/duenio/editar")
-    public String editDuenio(@RequestBody Duenio duenio){
+    public Duenio editDuenio(@RequestBody Duenio duenio){
         duenioService.editDuenio(duenio);
-        return "Dueño editado correctamente";
+        return duenioService.getDuenio(duenio.getId_duenio());
     }
     
-    @DeleteMapping("/duenio/eliminar/{id_duenio}")
-    public String deleteDuenio(@PathVariable Long id_duenio){
-        duenioService.deleteDuenio(id_duenio);
+    @DeleteMapping("/duenio/eliminar/{id}")
+    public String deleteDuenio(@PathVariable Long id){
+        duenioService.deleteDuenio(id);
         return "Dueño eliminado correctamente";
     }
 }
