@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.TableGenerator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +15,8 @@ import lombok.Setter;
 public class Mascota {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "table_gen_mascota")
+    @TableGenerator(name = "table_gen_mascota", table = "hibernate_sequence", pkColumnName = "sequence_name", valueColumnName = "next_val", pkColumnValue = "mascota_seq", allocationSize = 1)
     private Long id_mascota;
     private String nombre;
     private String especie;

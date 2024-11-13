@@ -59,6 +59,7 @@ public class MascotaService implements IMascotaService {
         
         for (Mascota masco : listaMascotas) {
             
+            System.out.println(masco.getNombre());
             mascoDuenioDTO.setNombre_mascota(masco.getNombre());
             mascoDuenioDTO.setEspecie(masco.getEspecie());
             mascoDuenioDTO.setRaza(masco.getRaza());
@@ -66,6 +67,7 @@ public class MascotaService implements IMascotaService {
             mascoDuenioDTO.setApellido_duenio(masco.getDuenio().getApellido());
             
             listaMascoDuenio.add(mascoDuenioDTO);
+            mascoDuenioDTO = new MascoDuenioDTO(); //reseteo
         }
         return listaMascoDuenio;
     }

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.TableGenerator;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,8 @@ import lombok.Setter;
 public class Duenio {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "table_gen_duenio")
+    @TableGenerator(name = "table_gen_duenio", table = "hibernate_sequence", pkColumnName = "sequence_name", valueColumnName = "next_val", pkColumnValue = "duenio_seq", allocationSize = 1)
     private Long id_duenio;
     private String dni;
     private String nombre;
